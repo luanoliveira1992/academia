@@ -1,0 +1,15 @@
+<HTML>
+  <HEAD>
+    <TITLE>HTML Básico</TITLE>
+  </HEAD>
+  <BODY>
+     <H1>Olá
+     	<P>
+        Bem Vindo ao Sistema Gerenciador de Usuários
+        <P>
+        	<br/>
+        {% for usuario in object_list %}
+          <h3>{{ usuario.nome}}</h3> 
+        {% endfor %}
+   </BODY>
+</HTML>
