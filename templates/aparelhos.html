@@ -1,0 +1,13 @@
+{% extends "baseList.html" %}
+
+{% block cabecalho %}
+   <td>Código</td>
+   <td>Descrição</td>
+   <td>Categoria</td>
+{% endblock %}
+
+{% block conteudo %}
+<td> {{ valor.codigo }} </td>
+<td> {{ valor.descricao }} </td>
+<td> {{ valor.categorias.descricao }} </td>
+{% endblock %}

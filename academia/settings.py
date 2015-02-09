@@ -38,14 +38,18 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     #Meu Appp
     'usuarios',
+    'login',
+    'cliente',
+    'aparelhos',
     #--------------------
+    'bsct',
     'django.contrib.sites',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    # ... include the providers you want to enable:
-    'allauth.socialaccount.providers.facebook',
-    'allauth.socialaccount.providers.google',
+    # 'allauth',
+      #  'allauth.account',
+     #  'allauth.socialaccount',
+     # ... include the providers you want to enable:
+     # 'allauth.socialaccount.providers.facebook',
+     # 'allauth.socialaccount.providers.google'
 )
 SITE_ID = 1
 
@@ -54,9 +58,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+            #'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -67,7 +71,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.static',
     'django.contrib.messages.context_processors.messages',
     'allauth.account.context_processors.account',
-    'allauth.socialaccount.context_processors.socialaccount',
+    #'allauth.socialaccount.context_processors.socialaccount',
 )
 
 ROOT_URLCONF = 'academia.urls'
@@ -88,7 +92,7 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br'
 
 TIME_ZONE = 'UTC'
 

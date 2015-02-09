@@ -1,0 +1,45 @@
+{% load generatortags %}
+{% start_comment %} coding: utf8 {% end_comment %}
+
+<h1> OVERWIRTED TEMPLATE </h1>
+<a href="{% gen_url_tag appname|lower modelname|lower "create" %}" class="model-new {{modelname}}-new">New {{modelname}}</a> 
+{% start_tag %} if object_list {% end_tag %}
+    <table class="model-list-table {{modelname}}-list-table">
+    <thead class="model-list-table-thead {{modelname}}-list-table-thead">
+        <tr class="model-list-table-thead-tr {{modelname}}-list-table-thead-tr">
+            <th class="model-list-table-tr-th-object {{modelname}}-list-table-tr-th-object">{{modelname}} </th> 
+            <th class="model-list-table-tr-th-actions {{modelname}}-list-table-tr-th-actions"> Actions</th> </tr>
+    </thead>
+    <tbody class="model-list-table-tbody {{modelname}}-list-table-tbody">
+    {% start_tag %} for obj in object_list {% end_tag %}
+        <tr class="model-list-table-tr {{modelname}}-list-table-tr">
+            <td class="model-list-table-tr-td-object {{modelname}}-list-table-tr-td-object">{% start_var %} obj {% end_var %}</td>
+            <td class="model-list-table-tr-td-actions {{modelname}}-list-table-tr-td-actions">
+                <a href="{% start_tag %} url "{{appname|lower}}:{{modelname|lower}}:update" obj.pk {% end_tag %}" class="model-list-table-tr-td-actions-edit {{modelname}}-list-table-tr-td-actions-edit">edit</a>
+                <a href="{% start_tag %} url "{{appname|lower}}:{{modelname|lower}}:delete" obj.pk {% end_tag %}" class="model-list-table-tr-td-actions-delete {{modelname}}-list-table-tr-td-actions-delete">delete</a>
+            </td>
+        </tr>
+    {% start_tag %} endfor {% end_tag %}
+    </tbody>
+    </table>
+    {% start_tag %} if is_paginated {% end_tag %}
+        <div class="model-list-pagination {{modelname}}-list-pagination">
+            <span class="model-list-page-links">
+                {% start_tag %} if page_obj.has_previous {% end_tag %}
+                    <a href="{% start_tag %} url "{{appname|lower}}:{{modelname|lower}}:list" page_obj.previous_page_number {% end_tag %}" class="model-list-page-links-previous {{modelname}}-list-page-links-next-previous">Previous</a>
+                {% start_tag %} endif {% end_tag %}
+                {% verbatim %}
+                <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% endverbatim %}
+                {% start_tag %}if page_obj.has_next {% end_tag %}
+                    <a href="{% start_tag %} url "{{appname|lower}}:{{modelname|lower}}:list" page_obj.next_page_number {% end_tag %}" class="model-list-page-links-next {{modelname}}-list-page-links-next">Next</a>
+                {% start_tag %} endif {% end_tag %}
+            </span>
+        </div>
+    {% start_tag %} endif {% end_tag %}
+{% start_tag %} else {% end_tag %}
+    <p id="{{modelname|lower}}_list_not_found_msg" class="model-list-not-found-msg {{modelname|lower}}-list-not-found-msg"> No {{modelname|lower}}s found. </p>
+{% start_tag %} endif {% end_tag %}
+

@@ -1,0 +1,33 @@
+{% load generatortags %}
+
+{% verbatim %}
+
+{# coding: utf8 #}
+{% if object %}
+{% endverbatim %}
+<div id="{{modelname}}_form_header" class="object-form-header {{modelname}}-form-header">
+
+{% verbatim %}
+
+Editing {{object}}
+</div>
+{% else %}
+Create new {{modelname}}
+{% endif %}
+
+{% endverbatim %}
+
+<form action="." method="post" name="{{modelname}}_form" class="model-form {{modelname}}-form">
+    {% start_tag %} csrf_token {% end_tag %}
+    <table class="model-form-table {{modelname}}-form-table">
+        <tbody class="model-form-tbody {{modelname}}-form-tbody">
+            {% start_var %} form.as_table {% end_var %}
+            <tr class="model-form-table-tr {{modelname}}-form-table-tr">
+                <td colspan="2" class="model-form-table-tr-td {{modelname}}-form-table-tr-td">
+                    <input type="submit" value="Ok" class="model-form-submit {{modelname}}-form-submit"/>
+                    <a href="{% gen_url_tag appname|lower modelname|lower "list" page="1"  %}" class="model-form-cancel {{modelname}}-form-cancel">Cancel </a>
+                </td>
+            </tr>
+       </tbody>
+  </table> 
+</form>
